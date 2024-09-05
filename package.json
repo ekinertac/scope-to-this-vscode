@@ -35,9 +35,7 @@
   },
   "activationEvents": [
     "onStartupFinished",
-    "onView:fileExplorer",
-    "onCommand:scope-to-this.scope",
-    "onCommand:scope-to-this.clear"
+    "onView:fileExplorer"
   ],
   "contributes": {
     "commands": [
@@ -52,18 +50,23 @@
       }
     ],
     "menus": {
-      "view/title": [
-        {
-          "command": "scope-to-this.clear",
-          "group": "navigation",
-          "when": "view == 'workbench.explorer.fileView' && scopeToThis.scoped"
-        }
-      ],
       "explorer/context": [
         {
           "command": "scope-to-this.scope",
-          "group": "2_workspace@1",
-          "when": "activeViewlet == 'workbench.view.explorer' && explorerResourceIsFolder"
+          "group": "navigation"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "scope-to-this.clear",
+          "when": "view == workbench.explorer.fileView && scopeToThis.scoped",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "scope-to-this.clear",
+          "when": "scopeToThis.scoped"
         }
       ]
     }
